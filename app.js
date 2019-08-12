@@ -33,31 +33,32 @@ const nextTurn = () => {
     gameState.player = "Player 1";
   }
   if (gameState.player === "Player 1") {
-    console.log("hi");
     turnText.innerText = `${gameState.player1Name || gameState.player}'s turn`;
   } else {
-    console.log("p2");
     turnText.innerText = `${gameState.player2Name || gameState.player}'s turn`;
   }
+};
+
+const declareWinner = winner => {
+  if (winner === 1) {
+    gameState.p1Score++;
+    winner = gameState.player1Name || "Player 1";
+    player1Score.innerText = `${winner}: ${gameState.p1Score}`;
+  } else {
+    gameState.p2Score++;
+    winner = gameState.player2Name || "Player 2";
+    player2Score.innerText = `${winner}: ${gameState.p2Score}`;
+  }
+  msg.innerText = `${winner} wins!`;
+  gameBoard.removeEventListener("click", handleClick, false);
 };
 
 const checkWinner = () => {
   // check for one player across an entire row
   gameState.board.forEach(row => {
     if (row[0] !== 0 && row[0] === row[1] && row[1] === row[2]) {
-      msg.innerText = `Player ${row[0]} wins!`;
-      if (row[0] === 1) {
-        gameState.p1Score++;
-      } else {
-        gameState.p2Score++;
-      }
-      player1Score.innerText = `${gameState.player1Name || "Player 1"}: ${
-        gameState.p1Score
-      }`;
-      player2Score.innerText = `${gameState.player2Name || "Player 2"}: ${
-        gameState.p2Score
-      }`;
-      gameBoard.removeEventListener("click", handleClick, false);
+      let winner = row[0];
+      return declareWinner(winner);
     }
   });
 
@@ -68,19 +69,8 @@ const checkWinner = () => {
       gameState.board[0][col] === gameState.board[1][col] &&
       gameState.board[1][col] === gameState.board[2][col]
     ) {
-      msg.innerText = `Player ${gameState.board[0][col]} wins!`;
-      if (gameState.board[0][col] === 1) {
-        gameState.p1Score++;
-      } else {
-        gameState.p2Score++;
-      }
-      player1Score.innerText = `${gameState.player1Name || "Player 1"}: ${
-        gameState.p1Score
-      }`;
-      player2Score.innerText = `${gameState.player2Name || "Player 2"}: ${
-        gameState.p2Score
-      }`;
-      gameBoard.removeEventListener("click", handleClick, false);
+      let winner = gameState.board[0][col];
+      return declareWinner(winner);
     }
   }
 
@@ -91,42 +81,15 @@ const checkWinner = () => {
       gameState.board[0][0] === gameState.board[1][1] &&
       gameState.board[1][1] === gameState.board[2][2]
     ) {
-      msg.innerText = `Player ${gameState.board[0][0]} wins!`;
-      if (gameState.board[1][1] === 1) {
-        console.log("hi");
-        gameState.p1Score++;
-      } else {
-        console.log("hi");
-        gameState.p2Score++;
-      }
-      player1Score.innerText = `${gameState.player1Name || "Player 1"}: ${
-        gameState.p1Score
-      }`;
-      player1Score.innerText = `${gameState.player2Name || "Player 2"}: ${
-        gameState.p2Score
-      }`;
-
-      gameBoard.removeEventListener("click", handleClick, false);
-      break;
+      let winner = gameState.board[0][0];
+      return declareWinner(winner);
     } else if (
       gameState.board[0][2] !== 0 &&
       gameState.board[0][2] === gameState.board[1][1] &&
       gameState.board[1][1] === gameState.board[2][0]
     ) {
-      msg.innerText = `Player ${gameState.board[0][2]} wins!`;
-      if (gameState.board[1][1] === 1) {
-        gameState.p1Score++;
-      } else {
-        gameState.p2Score++;
-      }
-      player1Score.innerText = `${gameState.player1Name || "Player 1"}: ${
-        gameState.p1Score
-      }`;
-      player2Score.innerText = `${gameState.player2Name || "Player 2"}: ${
-        gameState.p2Score
-      }`;
-      gameBoard.removeEventListener("click", handleClick, false);
-      break;
+      let winner = gameState.board[0][2];
+      return declareWinner(winner);
     }
   }
 
@@ -141,6 +104,7 @@ const checkWinner = () => {
   });
   if (boardFull) {
     msg.innerText = "It's a draw!";
+    gameBoard.removeEventListener("click", handleClick, false);
   }
 };
 
