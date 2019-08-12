@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="headline"><h1>Tic Tac Toe</h1></div>
+      <div class="turn"></div>
+      <div id="msg"></div>
+      <button class="reset">Reset Score</button>
+      <button class="new-game">New Game</button>
+    </div>
+    <div id="game-board">
+      <div id="top-row">
+        <div class="left"></div>
+        <div class="middle"></div>
+        <div class="right"></div>
+      </div>
+      <div id="middle-row">
+        <div class="left"></div>
+        <div class="middle"></div>
+        <div class="right"></div>
+      </div>
+      <div id="bottom-row">
+        <div class="left"></div>
+        <div class="middle"></div>
+        <div class="right"></div>
+      </div>
+    </div>
+    <div class="scoreboard">
+      <span class="player-1-score">Player 1: 0</span>
+      <span class="player-2-score">Player 2: 0</span>
+    </div>
+    <div>
+      <p>Player 1's name</p>
+      <input type="text" class="p1-name" />
+      <span><button class="player-1-name-submit">Submit</button></span>
+    </div>
+    <div>
+      <p>Player 2's name</p>
+      <input type="text" class="p2-name" />
+      <span><button class="player-2-name-submit">Submit</button></span>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+body {
+  /* display: flex; */
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+#game-board {
+  margin-left: 25vw;
+  width: 50vw;
+}
+
+#top-row {
+  border-bottom: 2px solid black;
+  text-align: center;
+  height: 16.67vh;
+  display: flex;
+}
+
+#middle-row {
+  height: 16.67vh;
+  display: flex;
+}
+
+#bottom-row {
+  border-top: 2px solid black;
+  height: 16.67vh;
+  display: flex;
+}
+
+.left {
+  /* height: 100px; */
+  width: 16.67vw;
+}
+
+.middle {
+  border-left: 2px solid black;
+  /* height: 100px; */
+  width: 16.67vw;
+}
+
+.right {
+  border-left: 2px solid black;
+  /* height: 100px; */
+  width: 16.67vw;
+}
+
+.player1 {
+  background: blue;
+  width: 100%;
+  height: 100%;
+}
+
+.player2 {
+  background: red;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  font-size: 50px;
+}
+
+p {
+  margin-bottom: 0;
+}
