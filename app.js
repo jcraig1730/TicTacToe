@@ -141,7 +141,7 @@ const handleClick = e => {
   let targetRow = e.path[1].id;
   let targetCol = e.path[0].classList[0];
   if (!targetRow || !targetCol) {
-    msg.innerText = "Choose a different square";
+    msg.innerText = "Location taken, please choose a different square";
   } else {
     let target = document.querySelector(`#${targetRow} .${targetCol}`);
     markMatrix(targetRow, targetCol);
@@ -189,12 +189,18 @@ player1NameSubmit.addEventListener("click", () => {
   let name = document.querySelector(".p1-name").value;
   gameState.player1Name = name;
   player1Score.innerText = `${gameState.player1Name}: ${gameState.p1Score}`;
+  if (gameState.player === "Player 1") {
+    turnText.innerText = `${name}'s turn`;
+  }
 });
 
 player2NameSubmit.addEventListener("click", () => {
   let name = document.querySelector(".p2-name").value;
   gameState.player2Name = name;
   player2Score.innerText = `${gameState.player2Name}: ${gameState.p2Score}`;
+  if (gameState.player === "Player 2") {
+    turnText.innerText = `${name}'s turn`;
+  }
 });
 
 nextTurn();

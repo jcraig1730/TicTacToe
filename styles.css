@@ -70,6 +70,9 @@ body {
   display: flex;
   justify-content: space-between;
   font-size: 50px;
+  background: black;
+  color: white;
+  padding: 25px;
 }
 
 p {
